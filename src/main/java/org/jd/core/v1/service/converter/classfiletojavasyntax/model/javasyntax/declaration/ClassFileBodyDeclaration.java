@@ -92,6 +92,8 @@ public class ClassFileBodyDeclaration extends BodyDeclaration implements ClassFi
         ClassFileMemberDeclaration removed = innerTypeMap.remove(internalName);
         if (innerTypeDeclarations != null) {
             innerTypeDeclarations.remove(removed);
+        } else if (outerBodyDeclaration != null) {
+            removed = outerBodyDeclaration.removeInnerType(internalName);
         }
         return removed;
     }
